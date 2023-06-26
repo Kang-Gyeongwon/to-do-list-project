@@ -19,6 +19,11 @@ const Header = (props) => {
       id: Date.now(),
       ...todosValues,
     });
+    setTodoValue({
+      title: "",
+      body: "",
+      isDone: false,
+    });
   };
 
   return (
