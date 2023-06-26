@@ -10,11 +10,9 @@ const ToDoList = (props) => {
     });
   };
   const handleRemoveOnclick = (removeId) => {
-    // const todos.filter((todo) => {
-    //   return todo.id !== removeId
-    // })
-    // props.setTodops()
-  }
+    console.log(props.onRemoveTodo);
+    props.onRemoveTodo(removeId);
+  };
   return (
     <div>
       <div>
@@ -32,7 +30,7 @@ const ToDoList = (props) => {
                     <ToDoBtn
                       style={{ border: "2px solid red" }}
                       onClick={() => {
-                        handleRemoveOnclick(todo.id)
+                        handleRemoveOnclick(todo.id);
                       }}
                     >
                       삭제하기
@@ -63,7 +61,12 @@ const ToDoList = (props) => {
                   <spna>{todo.body}</spna>
                 </div>
                 <BtnBox>
-                  <ToDoBtn style={{ border: "2px solid red" }}>
+                  <ToDoBtn
+                    style={{ border: "2px solid red" }}
+                    onClick={() => {
+                      handleCompletionOnclick(todo.id);
+                    }}
+                  >
                     삭제하기
                   </ToDoBtn>
                   <ToDoBtn
