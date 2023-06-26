@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <div>
       <Header onAddTodo={handleAddTodo} />
-      <ToDoList />
+      <ToDoList todos={todos} />
     </div>
   );
 };
