@@ -1,10 +1,10 @@
-import { BtnBox, ToDoBtn, ToDoContainer } from "./styled";
+import { BtnBox, ToDoBtn, ToDoContainer, boxStyle } from "./styled";
 
 const TodoContainer = (props) => {
   const todos = props.todos;
   console.log(todos);
   return (
-    <div>
+    <div style={boxStyle}>
       {todos.map((todo) => {
         return (
           <ToDoContainer key={todo.id}>
