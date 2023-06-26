@@ -66,7 +66,12 @@ const ToDoList = (props) => {
                     <spna>{todo.body}</spna>
                   </div>
                   <BtnBox>
-                    <ToDoBtn style={{ border: "2px solid red" }}>
+                    <ToDoBtn
+                      style={{ border: "2px solid red" }}
+                      onClick={() => {
+                        handleRemoveOnclick(todo.id);
+                      }}
+                    >
                       삭제하기
                     </ToDoBtn>
                     <ToDoBtn
