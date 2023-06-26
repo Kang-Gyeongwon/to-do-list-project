@@ -1,4 +1,4 @@
-import TodoContainer from "./todocontainers/TodoContainer";
+import TodoContainer from "./todoContainers/index";
 
 const ToDoList = (props) => {
   return (

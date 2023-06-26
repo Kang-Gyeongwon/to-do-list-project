@@ -1,4 +1,4 @@
-import { BtnBox, ToDoBtn, ToDoContainer } from "./ToDoContainerStyle";
+import { BtnBox, ToDoBtn, ToDoContainer } from "./styled";
 
 const TodoContainer = (props) => {
   const todos = props.todos
