@@ -13,10 +13,17 @@ const HomePage = () => {
     const updatedTodos = todos.filter((todo) => todo.id !== removeId);
     setTodos(updatedTodos);
   };
+    const handleUpdateTodos = (currentId) => {
+      setTodos(currentId);
+    };
   return (
     <div>
       <Header onAddTodo={handleAddTodo} />
-      <ToDoList todos={todos} onRemoveTodo={handleRemoveTodo} />
+      <ToDoList
+        todos={todos}
+        onRemoveTodo={handleRemoveTodo}
+        onUpdateTodos={handleUpdateTodos}
+      />
     </div>
   );
 };
