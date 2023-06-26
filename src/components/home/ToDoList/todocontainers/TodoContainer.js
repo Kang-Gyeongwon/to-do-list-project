@@ -1,11 +1,13 @@
 import { BtnBox, ToDoBtn, ToDoContainer } from "./ToDoContainerStyle";
 
-const TodoContainer = () => {
+const TodoContainer = (props) => {
+  const todos = props.todos
+  console.log(todos);
   return (
     <ToDoContainer>
       <div>
-        <h2>리액트 공부하기</h2>
-        <spna>리액트 기초를 공부해봅시다</spna>
+        <h2>{todos.title}</h2>
+        <spna>{todos.body}</spna>
       </div>
       <BtnBox>
         <ToDoBtn style={{ border: "2px solid red" }}>삭제하기</ToDoBtn>

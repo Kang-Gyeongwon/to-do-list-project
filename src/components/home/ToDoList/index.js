@@ -1,7 +1,6 @@
-import TodoContainer from "../../shard/TodoContainer";
+import TodoContainer from "./todocontainers/TodoContainer";
 
 const ToDoList = (props) => {
-  console.log(props)
   return (
     <div>
       <div>
