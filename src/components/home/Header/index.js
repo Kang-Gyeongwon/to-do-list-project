@@ -1,28 +1,24 @@
 import { useState } from "react";
 import { Headline, InputBox, FormLabel, FormInput, AddBtn } from "./styled";
 
-const Header = () => {
-  const [todos, updateTodo] = useState([]);
-  const [todoId, updateTodoId] = useState(0);
-  const [curTilte, updateTitle] = useState("");
-  const [curBody, updateBody] = useState("");
+const Header = (props) => {
+  const [todosValues, setTodoValue] = useState({
+    title: "",
+    body: "",
+    isDone: false,
+  });
 
+  const handleInputChange = (e) => {
+    setTodoValue({
+      ...todosValues,
+      [e.target.name]: e.target.value,
+    });
+  };
   const handleClickSubmit = () => {
-    if (todoId >= 0) {
-      updateTodo([
-        ...todos,
-        {
-          id: todoId,
-          title: curTilte,
-          body: curBody,
-          isDone: false,
-        },
-      ]);
-      updateTodoId(todoId + 1);
-      updateTitle("");
-      updateBody("");
-      console.log(curTilte, curBody);
-    }
+    props.onAddTodo({
+      id: Date.now(),
+      ...todosValues,
+    });
   };
 
   return (
@@ -34,15 +30,17 @@ const Header = () => {
       <InputBox>
         <FormLabel>제목</FormLabel>
         <FormInput
+          name="title"
           type="text"
-          value={curTilte}
-          onChange={(e) => updateTitle(e.target.value)}
+          onChange={handleInputChange}
+          value={todosValues.title}
         />
         <FormLabel>내용</FormLabel>
         <FormInput
+          name="body"
           type="text"
-          value={curBody}
-          onChange={(e) => updateBody(e.target.value)}
+          value={todosValues.body}
+          onChange={handleInputChange}
         />
         <AddBtn type="submit" value="추가하기" onClick={handleClickSubmit} />
       </InputBox>
