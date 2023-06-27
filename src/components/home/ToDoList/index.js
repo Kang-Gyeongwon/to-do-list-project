@@ -80,7 +80,7 @@ const ToDoList = (props) => {
                         handleCompletionOnclick(todo.id);
                       }}
                     >
-                      완료
+                      취소
                     </ToDoBtn>
                   </BtnBox>
                 </ToDoContainer>
