@@ -29,7 +29,7 @@ const Header = (props) => {
   return (
     <div>
       <Headline>
-        <spna>My Todo List</spna>
+        <span>My Todo List</span>
         <span>React</span>
       </Headline>
       <InputBox>
