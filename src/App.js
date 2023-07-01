@@ -1,15 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
-import HomePage from "./pages/home";
-import { GlobalStyle } from "./Globalstyle";
+import HomePage from "./components/pages/home";
 
 const App = () => {
-  return (
-    <>
-      <GlobalStyle />
-      <HomePage />
-    </>
-  );
+  return <HomePage />;
 };
 
 export default App;
