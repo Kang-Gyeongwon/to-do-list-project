@@ -1,5 +1,13 @@
-import ToDoContainer from "./ToDoContainer";
-import { boxStyle } from "./styled";
+import { useState } from "react";
+import Header from "../home/Header";
+import ToDoList from "../home/ToDoList";
+
+const HomePage = () => {
+  const [todos, setTodos] = useState([]);
+
+  const handleAddTodo = (todo) => {
+    const newTodos = [...todos, todo];
+    setTodos(newTodos);import { BtnBox, ToDoBtn, ToDoContainer, boxStyle } from "./styled";
 
 const ToDoList = (props) => {
   const todos = props.todos;
@@ -14,7 +22,6 @@ const ToDoList = (props) => {
       return todo;
     });
     props.onUpdateTodos(updatedTodos);
-    console.log(updatedTodos);
   };
   const handleRemoveOnclick = (removeId) => {
     props.onRemoveTodo(removeId);
@@ -24,35 +31,71 @@ const ToDoList = (props) => {
       <div>
         <h2>Working.. 🔥</h2>
         <div style={boxStyle}>
-          {todos.map((todo) =>
-            todo.isDone === false ? (
-              <ToDoContainer
-                key={todo.id}
-                id={todo.id}
-                title={todo.title}
-                body={todo.body}
-                handleCompletionOnclick={handleCompletionOnclick}
-                handleRemoveOnclick={handleRemoveOnclick}
-              />
-            ) : null
-          )}
+          {todos.map((todo) => {
+            if (todo.isDone === false) {
+              return (
+                <ToDoContainer key={todo.id}>
+                  <div>
+                    <h2>{todo.title}</h2>
+                    <spna>{todo.body}</spna>
+                  </div>
+                  <BtnBox>
+                    <ToDoBtn
+                      style={{ border: "2px solid red" }}
+                      onClick={() => {
+                        handleRemoveOnclick(todo.id);
+                      }}
+                    >
+                      삭제하기
+                    </ToDoBtn>
+                    <ToDoBtn
+                      style={{ border: "2px solid green" }}
+                      onClick={() => {
+                        handleCompletionOnclick(todo.id);
+                      }}
+                    >
+                      완료
+                    </ToDoBtn>
+                  </BtnBox>
+                </ToDoContainer>
+              );
+            }
+          })}
         </div>
       </div>
       <div>
         <h2>Done..! 🎉</h2>
         <div style={boxStyle}>
-          {todos.map((todo) =>
-            todo.isDone !== false ? (
-              <ToDoContainer
-                key={todo.id}
-                id={todo.id}
-                title={todo.title}
-                body={todo.body}
-                handleCompletionOnclick={handleCompletionOnclick}
-                handleRemoveOnclick={handleRemoveOnclick}
-              />
-            ) : null
-          )}
+          {todos.map((todo) => {
+            if (todo.isDone !== false) {
+              return (
+                <ToDoContainer key={todo.id}>
+                  <div>
+                    <h2>{todo.title}</h2>
+                    <spna>{todo.body}</spna>
+                  </div>
+                  <BtnBox>
+                    <ToDoBtn
+                      style={{ border: "2px solid red" }}
+                      onClick={() => {
+                        handleRemoveOnclick(todo.id);
+                      }}
+                    >
+                      삭제하기
+                    </ToDoBtn>
+                    <ToDoBtn
+                      style={{ border: "2px solid green" }}
+                      onClick={() => {
+                        handleCompletionOnclick(todo.id);
+                      }}
+                    >
+                      취소
+                    </ToDoBtn>
+                  </BtnBox>
+                </ToDoContainer>
+              );
+            }
+          })}
         </div>
       </div>
     </div>
@@ -60,3 +103,24 @@ const ToDoList = (props) => {
 };
 
 export default ToDoList;
+  };
+  const handleRemoveTodo = (removeId) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== removeId);
+    setTodos(updatedTodos);
+  };
+    const handleUpdateTodos = (currentId) => {
+      setTodos(currentId);
+    };
+  return (
+    <div>
+      <Header onAddTodo={handleAddTodo} />
+      <ToDoList
+        todos={todos}
+        onRemoveTodo={handleRemoveTodo}
+        onUpdateTodos={handleUpdateTodos}
+      />
+    </div>
+  );
+};
+
+export default HomePage;
